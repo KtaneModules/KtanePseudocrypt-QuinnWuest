@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using Rnd = UnityEngine.Random;
 
-public class GobbledygookScript : MonoBehaviour
+public class PseudocryptScript : MonoBehaviour
 {
     public KMBombModule Module;
     public KMBombInfo BombInfo;
@@ -58,10 +58,8 @@ public class GobbledygookScript : MonoBehaviour
         }
         if (count != 1 || !_chosenEntryText.ToCharArray().Contains("ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_correctLetter]))
             goto shuffleAgain;
-        Debug.LogFormat("[Gobbledygook #{0}] The chosen text is \"{1}\".", _moduleId, _chosenEntryText);
-        Debug.LogFormat("[Gobbledygook #{0}] The shuffled alphabet is {1}.", _moduleId, _shuffledAlphabet);
-        Debug.LogFormat("[Gobbledygook #{0}] The text on the screen is \"{1}\".", _moduleId, _displayText);
-        Debug.LogFormat("[Gobbledygook #{0}] The letter to submit is {1}.", _moduleId, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_correctLetter]);
+        Debug.LogFormat("[Pseudocrypt #{0}] The chosen text is \"{1}\".", _moduleId, _chosenEntryText);
+        Debug.LogFormat("[Pseudocrypt #{0}] The shuffled alphabet is {1}.", _moduleId, _shuffledAlphabet);
         _displayText = "";
         for (int i = 0; i < _chosenEntryText.Length; i++)
         {
@@ -70,6 +68,8 @@ public class GobbledygookScript : MonoBehaviour
             else
                 _displayText += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Array.IndexOf(_shuffledAlphabet.ToCharArray(), _chosenEntryText[i])];
         }
+        Debug.LogFormat("[Pseudocrypt #{0}] The text on the screen is \"{1}\".", _moduleId, _displayText);
+        Debug.LogFormat("[Pseudocrypt #{0}] The letter to submit is {1}.", _moduleId, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_correctLetter]);
         ScreenText.text = _displayText.WordWrap(25).Join("\n");
     }
 
@@ -103,7 +103,7 @@ public class GobbledygookScript : MonoBehaviour
             Audio.PlaySoundAtTransform("Solve", transform);
             ScreenText.text = _chosenEntryText.WordWrap(25).Join("\n");
             ScreenText.color = new Color(0, 1, 0);
-            Debug.LogFormat("[Gobbledygook #{0}] Correctly submitted {1}. Module solved.", _moduleId, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_correctLetter]);
+            Debug.LogFormat("[Pseudocrypt #{0}] Correctly submitted {1}. Module solved.", _moduleId, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_correctLetter]);
         }
         else
         {
@@ -111,7 +111,7 @@ public class GobbledygookScript : MonoBehaviour
                 StopCoroutine(_strike);
             _strike = StartCoroutine(Strike());
             Module.HandleStrike();
-            Debug.LogFormat("[Gobbledygook #{0}] Incorrectly submitted {1}. Strike.", _moduleId, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_currentLetter]);
+            Debug.LogFormat("[Pseudocrypt #{0}] Incorrectly submitted {1}. Strike.", _moduleId, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_currentLetter]);
         }
         return false;
     }
