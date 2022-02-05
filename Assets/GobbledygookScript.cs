@@ -27,9 +27,9 @@ public class GobbledygookScript : MonoBehaviour
     private string _shuffledAlphabet;
     private string _displayText;
     private int _correctLetter;
-
     private int _currentLetter;
     private bool _isAnimating;
+    private Coroutine _strike;
 
     private void Start()
     {
@@ -107,7 +107,9 @@ public class GobbledygookScript : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Strike());
+            if (_strike != null)
+                StopCoroutine(_strike);
+            _strike = StartCoroutine(Strike());
             Module.HandleStrike();
             Debug.LogFormat("[Gobbledygook #{0}] Incorrectly submitted {1}. Strike.", _moduleId, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_currentLetter]);
         }
