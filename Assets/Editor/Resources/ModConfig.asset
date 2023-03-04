@@ -15,9 +15,10 @@ MonoBehaviour:
   title: Pseudocrypt
   author: Quinn Wuest
   description: "Schwabbledabbleglibbeglabbe schwibbleschwabglab; Dibbledabble schwibbleschwabble
-    glibbleglabschwab.\r Schwabbledabbleglibbeglabbe schwibbleschwabdab; Dibbledabble
-    schwibbleschwabble glibbleschwabglab!\n\nIdea by cosmic_quinn\n\nDeveloped by
-    Quinn Wuest"
+    glibbleglabschwab.\r\nSchwabbledabbleglibbeglabbe schwibbleschwabdab; Dibbledabble
+    schwibbleschwabble glibbleschwabglab!\r\n\r\nIdea by cosmic_quinn\r\nDeveloped
+    by Quinn Wuest\r\n\r\n[url=https://ktane.timwi.de/HTML/Pseudocrypt.html]Manual
+    HTML[/url]\r\n[url=https://ktane.timwi.de/PDF/Pseudocrypt.pdf]Manual PDF[/url]"
   version: 1.0
   outputFolder: build
   previewImage: {fileID: 2800000, guid: f880517ea2770dd4b8198e0f84567c83, type: 3}
